@@ -86,7 +86,7 @@ public class MemberResourceRESTService {
     @Path("/ping")
     @Produces(MediaType.APPLICATION_JSON)
     public String ping() {
-        return "pong";
+        return "poong";
     }
 
     /**
