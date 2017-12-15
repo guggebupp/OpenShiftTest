@@ -9,17 +9,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class SudokuData {
 	
-	private List<Row> col = new ArrayList<>();	
+	private List<Integer> data = new ArrayList<>();	
 	private String status;
 		
 
-	public List<Row> getCol() {
-		return col;
+	public List<Integer> getData() {
+		return data;
 	}
 
 
-	public void setCol(List<Row> col) {
-		this.col = col;
+	public void setDat(List<Integer> col) {
+		this.data = data;
 	}
 	
 	
@@ -33,15 +33,5 @@ public class SudokuData {
 	}
 
 	
-	public class Row {
-		private List<Integer> data  = new ArrayList<>();
-
-		public List<Integer> getData() {
-			return data;
-		}
-
-		public void setData(List<Integer> data) {
-			this.data = data;
-		}
-	}
+	
 }
