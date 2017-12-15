@@ -67,6 +67,13 @@ public class SudokuResourceRestService {
     public Long saveSudoku(SudokuData sudokuData) {
         return sudokuService.saveSudoku(sudokuData);
     }
+    
+    @POST
+    @Path("/solved/{id:[0-9][0-9]*}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Long solvedSudoku(@PathParam("id") long id, SudokuData sudokuData) {
+        return sudokuService.solveSudoku(id, sudokuData);
+    }
 
     @GET
     @Path("/status/{id:[0-9][0-9]*}")

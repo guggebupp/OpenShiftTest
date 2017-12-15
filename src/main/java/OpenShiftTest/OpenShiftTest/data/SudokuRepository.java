@@ -126,4 +126,10 @@ public class SudokuRepository {
 		return d;
 	}
 
+	public Long solveSudoku(long id, SudokuData sudokuData) {
+		sudokuMap.put(id,sudokuData);
+		
+		return id;
+	}
+
 }

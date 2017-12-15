@@ -26,4 +26,8 @@ public class SudokuService {
 		return sudokuRepository.getSudoku(id);
 	}
 
+	public Long solveSudoku(long id, SudokuData sudokuData) {
+		return sudokuRepository.solveSudoku(id, sudokuData);
+	}
+
 }
