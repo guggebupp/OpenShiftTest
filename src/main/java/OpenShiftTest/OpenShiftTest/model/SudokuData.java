@@ -1,10 +1,11 @@
 package OpenShiftTest.OpenShiftTest.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuData {
 	
-	private List<Row> col;	
+	private List<Row> col = new ArrayList<>();	
 	private String status;
 		
 
@@ -29,7 +30,7 @@ public class SudokuData {
 
 
 	public class Row {
-		private List<Integer> data;
+		private List<Integer> data  = new ArrayList<>();;
 
 		public List<Integer> getData() {
 			return data;
