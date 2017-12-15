@@ -3,6 +3,10 @@ package OpenShiftTest.OpenShiftTest.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@SuppressWarnings("serial")
+@XmlRootElement
 public class SudokuData {
 	
 	private List<Row> col = new ArrayList<>();	
@@ -28,9 +32,9 @@ public class SudokuData {
 		this.status = status;
 	}
 
-
+	
 	public class Row {
-		private List<Integer> data  = new ArrayList<>();;
+		private List<Integer> data  = new ArrayList<>();
 
 		public List<Integer> getData() {
 			return data;
