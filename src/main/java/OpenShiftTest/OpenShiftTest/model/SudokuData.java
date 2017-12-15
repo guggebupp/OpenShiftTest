@@ -28,7 +28,7 @@ public class SudokuData {
 	}
 
 
-	private class Row {
+	public class Row {
 		private List<Integer> data;
 
 		public List<Integer> getData() {
