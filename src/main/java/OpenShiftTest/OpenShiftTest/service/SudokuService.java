@@ -16,7 +16,7 @@ public class SudokuService {
 	SudokuRepository sudokuRepository;
 
 	public Long saveSudoku(SudokuData sudokuData) {
-
+		sudokuData.setStatus("IDLE");
 		return sudokuRepository.saveSudoku(sudokuData);
 	}
 
