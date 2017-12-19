@@ -142,7 +142,7 @@ public class SudokuRepository {
 			status.add(new SudokuStatus(sud.getKey(), sud.getValue().getStatus()));
 			
 		}
-		return null;
+		return status;
 	}
 
 }
