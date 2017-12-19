@@ -1,10 +1,13 @@
 package OpenShiftTest.OpenShiftTest.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import OpenShiftTest.OpenShiftTest.data.SudokuRepository;
 import OpenShiftTest.OpenShiftTest.model.SudokuData;
+import OpenShiftTest.OpenShiftTest.model.SudokuStatus;
 
 @Stateless
 public class SudokuService {
@@ -28,6 +31,10 @@ public class SudokuService {
 
 	public Long solveSudoku(long id, SudokuData sudokuData) {
 		return sudokuRepository.solveSudoku(id, sudokuData);
+	}
+
+	public List<SudokuStatus> list() {
+		return sudokuRepository.getAll();		
 	}
 
 }

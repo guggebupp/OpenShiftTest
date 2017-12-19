@@ -43,6 +43,7 @@ import javax.ws.rs.core.Response;
 import OpenShiftTest.OpenShiftTest.data.MemberRepository;
 import OpenShiftTest.OpenShiftTest.model.Member;
 import OpenShiftTest.OpenShiftTest.model.SudokuData;
+import OpenShiftTest.OpenShiftTest.model.SudokuStatus;
 import OpenShiftTest.OpenShiftTest.service.MemberRegistration;
 import OpenShiftTest.OpenShiftTest.service.SudokuService;
 
@@ -94,6 +95,13 @@ public class SudokuResourceRestService {
     @Produces(MediaType.APPLICATION_JSON)
     public String ping() {
         return "sudoku rulez";
+    }
+    
+    @GET
+    @Path("/list")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SudokuStatus> list() {
+        return sudokuService.list();
     }
 
     

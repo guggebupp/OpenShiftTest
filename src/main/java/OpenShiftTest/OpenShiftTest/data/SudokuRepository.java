@@ -1,12 +1,16 @@
 package OpenShiftTest.OpenShiftTest.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import OpenShiftTest.OpenShiftTest.model.SudokuData;
+import OpenShiftTest.OpenShiftTest.model.SudokuStatus;
 
 
 @ApplicationScoped
@@ -130,6 +134,15 @@ public class SudokuRepository {
 		sudokuMap.put(id,sudokuData);
 		
 		return id;
+	}
+
+	public List<SudokuStatus> getAll() {
+		List<SudokuStatus> status = new ArrayList<>();
+		for(Map.Entry<Long, SudokuData> sud : sudokuMap.entrySet()){
+			status.add(new SudokuStatus(sud.getKey(), sud.getValue().getStatus()));
+			
+		}
+		return null;
 	}
 
 }
