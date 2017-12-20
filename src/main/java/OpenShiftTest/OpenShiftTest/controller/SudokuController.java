@@ -24,6 +24,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.lang3.StringUtils;
+
 import OpenShiftTest.OpenShiftTest.model.Member;
 import OpenShiftTest.OpenShiftTest.model.SudokuData;
 import OpenShiftTest.OpenShiftTest.service.MemberRegistration;
@@ -55,7 +57,7 @@ public class SudokuController {
         try {
         	SudokuData sudokuData = new SudokuData();
         	for(int i=0;i<81;i++){
-        		if(newSudoku[i] != null && newSudoku[i] != ""){
+        		if(!StringUtils.isEmpty(newSudoku[i])){
         			sudokuData.getData().add(Integer.parseInt(newSudoku[i]));
         		}else{
         			sudokuData.getData().add(0);
