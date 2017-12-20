@@ -135,6 +135,12 @@
                     <h:messages styleClass="messages"
                         errorClass="invalid" infoClass="valid"
                         warnClass="warning" globalOnly="true" />
+                    <h:commandButton id="solve"
+                        action="#{sudokuController.solveSudoku}"
+                        value="Solve" styleClass="register" />
+                    <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
                 </h:panelGrid>
             </p>
         </h:form>        
