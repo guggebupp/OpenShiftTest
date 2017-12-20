@@ -67,6 +67,7 @@ public class SudokuController {
             facesContext.addMessage(null, m);
             initNewsudoku();
         } catch (Exception e) {
+        	e.printStackTrace();
             String errorMessage = getRootErrorMessage(e);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
             facesContext.addMessage(null, m);
