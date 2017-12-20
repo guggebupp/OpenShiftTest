@@ -29,8 +29,11 @@
             <p>Enforces annotation-based constraints defined on the
                 model class.</p>
             <h:panelGrid columns="9" columnClasses="titleCell">    
-             
-                <h:inputText value="#{newSudoku[0]}" />
+            
+            <h:forEach var="i" begin="0" end="80">
+	            <h:inputText value="#{newSudoku'i']}" width="10%" />
+             </h:forEach>
+               <!--  <h:inputText value="#{newSudoku[0]}" />
                 <h:inputText value="#{newSudoku[1]}" />
 				<h:inputText value="#{newSudoku[2]}" />
 				<h:inputText value="#{newSudoku[3]}" />
@@ -119,7 +122,7 @@
 				<h:inputText value="#{newSudoku[78]}" />
 				<h:inputText value="#{newSudoku[79]}" />
 				<h:inputText value="#{newSudoku[80]}" />
-				
+ -->				
              </h:panelGrid>
 
             <p>
