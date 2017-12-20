@@ -19,8 +19,8 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-    template="/WEB-INF/templates/default.xhtml">
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <!-- template="/WEB-INF/templates/default.xhtml"> -->
     <ui:define name="content">
         <h1>Welcome to Sudoku!</h1>
         
@@ -31,10 +31,10 @@
                 model class.</p>
             <h:panelGrid columns="9" columnClasses="titleCell">    
             
-            <c:forEach int="count" begin="0" end="80">
+            <!-- <c:forEach int="count" begin="0" end="80">
 	            <h:inputText value="#{newSudoku[count]}" width="10%" />
-             </c:forEach>
-               <!--  <h:inputText value="#{newSudoku[0]}" />
+             </c:forEach> -->
+				<h:inputText value="#{newSudoku[0]}" width="10"/>
                 <h:inputText value="#{newSudoku[1]}" />
 				<h:inputText value="#{newSudoku[2]}" />
 				<h:inputText value="#{newSudoku[3]}" />
@@ -123,8 +123,8 @@
 				<h:inputText value="#{newSudoku[78]}" />
 				<h:inputText value="#{newSudoku[79]}" />
 				<h:inputText value="#{newSudoku[80]}" />
- -->				
-             </h:panelGrid>
+ 
+			</h:panelGrid>
 
             <p>
                 <h:panelGrid columns="2">
