@@ -31,8 +31,8 @@
                 model class.</p>
             <h:panelGrid columns="9" columnClasses="titleCell">    
             
-            <c:forEach var="i" begin="0" end="80">
-	            <h:inputText value="#{newSudoku['${i}']}" width="10%" />
+            <c:forEach int="count" begin="0" end="80">
+	            <h:inputText value="#{newSudoku[i]}" width="10%" />
              </c:forEach>
                <!--  <h:inputText value="#{newSudoku[0]}" />
                 <h:inputText value="#{newSudoku[1]}" />
