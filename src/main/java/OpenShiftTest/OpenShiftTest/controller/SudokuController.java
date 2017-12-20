@@ -48,12 +48,19 @@ public class SudokuController {
     @Named
     private String[] newSudoku;
     
-        
+    
+    @Produces
+    @Named
     private Long sudokudId;
 
     @PostConstruct
     public void initNewsudoku() {
+    	System.out.println("Init controller");
     	newSudoku = new String[81];
+    }
+    
+    public void newSudoku() {
+    	initNewsudoku();
     }
 
     public void saveSudoku() throws Exception {
@@ -69,8 +76,7 @@ public class SudokuController {
         	}
         	sudokudId = sudokuService.saveSudoku(sudokuData);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Saved!", "Registration successful");
-            facesContext.addMessage(null, m);
-            initNewsudoku();
+            facesContext.addMessage(null, m);            
         } catch (Exception e) {
         	e.printStackTrace();
             String errorMessage = getRootErrorMessage(e);
@@ -80,6 +86,7 @@ public class SudokuController {
     }
     
     public void solveSudoku(){
+    	System.out.println("SudokuId: " +  sudokudId);
     	SudokuData sudokuData = sudokuService.getSudoku(sudokudId);
     	int i = 0;
     	for(Integer s:sudokuData.getData()){
