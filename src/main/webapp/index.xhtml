@@ -245,11 +245,10 @@
 				<f:facet name="header">Status</f:facet>
                 #{_sudokustatus.status}
             </h:column>
-			<h:column>
-				<h:commandLink action="#{sudokuController.solveSudoku}">
+			<h:column>				
+				<h:commandLink id="solveLink" action="#{sudokuController.solveSudoku}">
 					<h:outputText value="#{_sudokustatus.id}" />
-					<f:setActionPropertyListener property="#{sudokuController.setSudoku}"
-						value="#{_sudokustatus.id}" />
+					<f:param name="id" value="#{_sudokustatus.id}" />
 				</h:commandLink>
 			</h:column>
 			<h:column>
