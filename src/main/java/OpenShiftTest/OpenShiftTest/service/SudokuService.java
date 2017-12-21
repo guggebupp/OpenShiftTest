@@ -44,4 +44,17 @@ public class SudokuService {
 		return sudokuRepository.getAll();		
 	}
 
+	public List<SudokuStatus> listActive() {
+		return sudokuRepository.getAllActive();		
+	}
+
+	public List<SudokuStatus> listActiveSleep(long sleepTime) {
+		try{
+			Thread.sleep(sleepTime);
+		}catch(Exception e){
+			
+		}
+		return sudokuRepository.getAllActive();			
+	}
+
 }

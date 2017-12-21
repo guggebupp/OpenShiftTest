@@ -145,4 +145,15 @@ public class SudokuRepository {
 		return status;
 	}
 
+	public List<SudokuStatus> getAllActive() {
+		List<SudokuStatus> status = new ArrayList<>();
+		for(Map.Entry<Long, SudokuData> sud : sudokuMap.entrySet()){
+			if(!"SOLVED".equals(sud.getValue().getStatus())){
+				status.add(new SudokuStatus(sud.getKey(), sud.getValue().getStatus()));
+			}
+			
+		}
+		return status;
+	}
+
 }

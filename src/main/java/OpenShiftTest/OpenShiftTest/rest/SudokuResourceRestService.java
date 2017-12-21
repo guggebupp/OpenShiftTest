@@ -103,6 +103,21 @@ public class SudokuResourceRestService {
     public List<SudokuStatus> list() {
         return sudokuService.list();
     }
+    
+    @GET    
+    @Path("/listActive")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SudokuStatus> listActive() {
+        return sudokuService.listActive();
+    }
+    
+    @GET    
+    @Path("/listActiveSleep/{sleepTime:[0-9][0-9]*}")    
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SudokuStatus> listActive(@PathParam("sleepTime") long sleepTime) {
+    	
+        return sudokuService.listActiveSleep(sleepTime);
+    }
 
     
 }
