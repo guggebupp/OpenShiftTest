@@ -148,7 +148,7 @@ public class SudokuRepository {
 	public List<SudokuStatus> getAllActive() {
 		List<SudokuStatus> status = new ArrayList<>();
 		for(Map.Entry<Long, SudokuData> sud : sudokuMap.entrySet()){
-			if(!"SOLVED".equals(sud.getValue().getStatus())){
+			if("IDLE".equals(sud.getValue().getStatus())){
 				status.add(new SudokuStatus(sud.getKey(), sud.getValue().getStatus()));
 			}
 			
