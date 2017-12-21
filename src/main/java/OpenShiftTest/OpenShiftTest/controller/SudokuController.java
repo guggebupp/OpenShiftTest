@@ -64,6 +64,22 @@ public class SudokuController {
     public void newSudoku() {
     	initNewsudoku();
     }
+        
+    public Long saveAndSolveSudoku() throws Exception {
+    	Long sudokuId = saveSudoku();
+    	SudokuData sudokuData = sudokuService.getSudoku(sudokudId);
+    	    		    	
+    	long endTime = System.currentTimeMillis() + 30000;
+    	while(("IDLE".equals(sudokuData.getStatus()) || "IN_PROGRESS".equals(sudokuData.getStatus())) && System.currentTimeMillis() < endTime){		
+			try {
+				Thread.sleep(500);
+				sudokuData = sudokuService.getSudoku(sudokudId);
+			} catch (Exception e) {
+
+			}
+		}
+    	return sudokuId;
+    }
 
     public Long saveSudoku() throws Exception {    	
         try {
