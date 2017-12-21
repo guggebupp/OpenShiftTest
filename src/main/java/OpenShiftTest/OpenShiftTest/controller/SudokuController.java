@@ -106,6 +106,7 @@ public class SudokuController {
     }
     
     public void solveSudoku(Long inSudokudId){
+    	System.out.println("SudokuId: " +  sudokudId);
     	sudokudId = inSudokudId;
     	solveSudoku();
     	return;

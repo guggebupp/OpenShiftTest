@@ -182,6 +182,12 @@
                         action="#{sudokuController.solveSudoku(_sudokustatus.id)}"
                         value="Result" styleClass="register" />
             </h:column>
+            <h:column> 
+            <f:facet name="header">GET RESULT2</f:facet>
+            <h:commandButton id="result"
+                        action="#{sudokuController.solveSudoku}"
+                        value="Result" styleClass="register" />
+            </h:column>
             
             <f:facet name="footer">
             REST URL for all sudokus: <a
