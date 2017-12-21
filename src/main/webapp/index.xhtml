@@ -248,9 +248,9 @@
 			<h:column>
 				<h:commandLink action="#{sudokuController.solveSudoku}">
 					<h:outputText value="#{_sudokustatus.id}" />
-					<f:updateActionListener
-						property="#{sudokuController.setSudoku}" value="#{_sudokustatus.id}" />
-						</h:commandLink>
+					<f:setActionPropertyListener property="#{sudokuController.setSudoku}"
+						value="#{_sudokustatus.id}" />
+				</h:commandLink>
 			</h:column>
 			<h:column>
 				<f:facet name="header">REST URL</f:facet>
