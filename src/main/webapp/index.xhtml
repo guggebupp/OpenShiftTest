@@ -175,7 +175,14 @@
                 <f:facet name="header">REST URL</f:facet>
                 <a
                     href="#{request.contextPath}/rest/sudoku/result/#{_sudokustatus.id}">/rest/sudoku/result/#{_sudokustatus.id}</a>
-            </h:column> 
+            </h:column>
+            <h:column> 
+            <f:facet name="header">GET RESULT</f:facet>
+            <h:commandButton id="result"
+                        action="#{sudokuController.solveSudoku(_sudokustatus.id)}"
+                        value="Result" styleClass="register" />
+            </h:column>
+            
             <f:facet name="footer">
             REST URL for all sudokus: <a
                     href="#{request.contextPath}/rest/sudoku/list">/rest/sudoku/list</a>
