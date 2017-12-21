@@ -64,6 +64,11 @@ public class SudokuController {
     public void newSudoku() {
     	initNewsudoku();
     }
+    
+    public void setSudoku(Long sudokuId){
+    	this.sudokudId = sudokuId;
+    	
+    }
         
     public Long saveAndSolveSudoku() throws Exception {
     	sudokudId = saveSudoku();
