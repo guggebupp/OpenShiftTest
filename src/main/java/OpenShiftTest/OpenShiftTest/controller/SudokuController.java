@@ -66,7 +66,7 @@ public class SudokuController {
     }
         
     public Long saveAndSolveSudoku() throws Exception {
-    	Long sudokuId = saveSudoku();
+    	sudokudId = saveSudoku();
     	SudokuData sudokuData = sudokuService.getSudoku(sudokudId);
     	    		    	
     	long endTime = System.currentTimeMillis() + 30000;
@@ -78,7 +78,8 @@ public class SudokuController {
 
 			}
 		}
-    	return sudokuId;
+    	solveSudoku();
+    	return sudokudId;
     }
 
     public Long saveSudoku() throws Exception {    	
