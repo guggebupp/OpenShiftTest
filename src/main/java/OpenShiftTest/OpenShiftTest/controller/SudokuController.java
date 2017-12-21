@@ -19,11 +19,13 @@ package OpenShiftTest.OpenShiftTest.controller;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ApplicationScoped;
+
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -47,11 +49,7 @@ public class SudokuController {
     @Produces
     @Named
     private String[] newSudoku;
-    
-    
-    @Produces
-    @Named
-    private Long sudokudId;
+            
 
     @PostConstruct
     public void initNewsudoku() {
@@ -63,7 +61,8 @@ public class SudokuController {
     	initNewsudoku();
     }
 
-    public void saveSudoku() throws Exception {
+    public Long saveSudoku() throws Exception {
+    	Long sudokudId = new Long(0);
         try {
         	SudokuData sudokuData = new SudokuData();
         	for(int i=0;i<81;i++){
@@ -83,9 +82,10 @@ public class SudokuController {
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
             facesContext.addMessage(null, m);
         }
+        return sudokudId;
     }
     
-    public void solveSudoku(){
+    public void solveSudoku(Long sudokudId){
     	System.out.println("SudokuId: " +  sudokudId);
     	SudokuData sudokuData = sudokuService.getSudoku(sudokudId);
     	int i = 0;
