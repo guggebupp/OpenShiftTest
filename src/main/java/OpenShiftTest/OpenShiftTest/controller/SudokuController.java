@@ -20,15 +20,14 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.commons.lang3.StringUtils;
 
-import OpenShiftTest.OpenShiftTest.model.Member;
 import OpenShiftTest.OpenShiftTest.model.SudokuData;
-import OpenShiftTest.OpenShiftTest.service.MemberRegistration;
 import OpenShiftTest.OpenShiftTest.service.SudokuService;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
@@ -36,6 +35,7 @@ import OpenShiftTest.OpenShiftTest.service.SudokuService;
 // Read more about the @Model stereotype in this FAQ:
 // http://www.cdi-spec.org/faq/#accordion6
 @Model
+@ApplicationScoped
 public class SudokuController {
 
     @Inject
