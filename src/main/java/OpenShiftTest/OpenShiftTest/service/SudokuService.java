@@ -12,16 +12,16 @@ import OpenShiftTest.OpenShiftTest.model.SudokuStatus;
 
 @Stateless
 public class SudokuService {
-	
+
 	@Inject
 	SudokuRepository sudokuRepository;
-	
+
 	@Inject
 	private Event<SudokuStatus> sudokuEventSrc;
 
 	public Long saveSudoku(SudokuData sudokuData) {
-		sudokuData.setStatus("IDLE");				
-		Long id =  sudokuRepository.saveSudoku(sudokuData);
+		sudokuData.setStatus("IDLE");
+		Long id = sudokuRepository.saveSudoku(sudokuData);
 		SudokuStatus status = new SudokuStatus(id, sudokuData.getStatus());
 		sudokuEventSrc.fire(status);
 		return id;
@@ -41,20 +41,25 @@ public class SudokuService {
 	}
 
 	public List<SudokuStatus> list() {
-		return sudokuRepository.getAll();		
+		return sudokuRepository.getAll();
 	}
 
 	public List<SudokuStatus> listActive() {
-		return sudokuRepository.getAllActive();		
+		return sudokuRepository.getAllActive();
 	}
 
 	public List<SudokuStatus> listActiveSleep(long sleepTime) {
-		try{
-			Thread.sleep(sleepTime);
-		}catch(Exception e){
-			
+		List<SudokuStatus> activeSudokus = sudokuRepository.getAllActive();
+		long endTime = System.currentTimeMillis() + sleepTime;
+		while (activeSudokus.isEmpty() && System.currentTimeMillis() < endTime) {
+			try {
+				Thread.sleep(500);
+				activeSudokus = sudokuRepository.getAllActive();
+			} catch (Exception e) {
+
+			}
 		}
-		return sudokuRepository.getAllActive();			
+		return activeSudokus;
 	}
 
 }
