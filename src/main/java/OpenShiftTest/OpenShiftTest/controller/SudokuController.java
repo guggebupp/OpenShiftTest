@@ -49,20 +49,23 @@ public class SudokuController {
     @Produces
     @Named
     private String[] newSudoku;
+    
+    
+    private Long  sudokudId;
             
 
     @PostConstruct
     public void initNewsudoku() {
     	System.out.println("Init controller");
     	newSudoku = new String[81];
+    	sudokudId = new Long(0);
     }
     
     public void newSudoku() {
     	initNewsudoku();
     }
 
-    public Long saveSudoku() throws Exception {
-    	Long sudokudId = new Long(0);
+    public Long saveSudoku() throws Exception {    	
         try {
         	SudokuData sudokuData = new SudokuData();
         	for(int i=0;i<81;i++){
@@ -85,7 +88,13 @@ public class SudokuController {
         return sudokudId;
     }
     
-    public void solveSudoku(Long sudokudId){
+    public void solveSudoku(Long inSudokudId){
+    	sudokudId = inSudokudId;
+    	solveSudoku();
+    	return;
+    }
+    
+    public void solveSudoku(){    	
     	System.out.println("SudokuId: " +  sudokudId);
     	SudokuData sudokuData = sudokuService.getSudoku(sudokudId);
     	int i = 0;
