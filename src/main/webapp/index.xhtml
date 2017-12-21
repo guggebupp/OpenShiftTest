@@ -178,15 +178,15 @@
             </h:column>
             <h:column> 
             <f:facet name="header">GET RESULT</f:facet>
-            <h:commandButton id="result"
+            <h:commandButton id="resultById"
                         action="#{sudokuController.solveSudoku(_sudokustatus.id)}"
-                        value="Result" styleClass="register" />
+                        value="ResultById" styleClass="register" />
             </h:column>
             <h:column> 
             <f:facet name="header">GET RESULT2</f:facet>
-            <h:commandButton id="result"
+            <h:commandButton id="resultByRow"
                         action="#{sudokuController.solveSudoku}"
-                        value="Result" styleClass="register" />
+                        value="ResultByRow" styleClass="register" />
             </h:column>
             
             <f:facet name="footer">
