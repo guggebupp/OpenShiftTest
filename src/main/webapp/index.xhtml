@@ -149,6 +149,31 @@
                         warnClass="warning" globalOnly="true" />
                 </h:panelGrid>
             </p>
-        </h:form>        
+        </h:form>   
+        <h2>Sudokus</h2>
+        <h:panelGroup rendered="#{empty sudoks}">
+            <em>No registered sudokus.</em>
+        </h:panelGroup>
+        <h:dataTable var="_sudokustatus" value="#{sudokus}"
+            rendered="#{not empty sudokus}"
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{_sudokustatus.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                #{_sudokustatus.status}
+            </h:column>           
+            <h:column>
+                <f:facet name="header">REST URL</f:facet>
+                <a
+                    href="#{request.contextPath}/rest/sudoku/result/#{_sudokustatus.id}">/rest/sudoku/result/#{_sudokustatus.id}</a>
+            </h:column> 
+            <f:facet name="footer">
+            REST URL for all sudokus: <a
+                    href="#{request.contextPath}/rest/sudoku/list">/rest/sudoku/list</a>
+            </f:facet>
+        </h:dataTable>     
     </ui:define>
 </ui:composition>
