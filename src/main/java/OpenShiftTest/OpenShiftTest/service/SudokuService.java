@@ -22,7 +22,7 @@ public class SudokuService {
 	public Long saveSudoku(SudokuData sudokuData) {
 		sudokuData.setStatus("IDLE");
 		Long id = sudokuRepository.saveSudoku(sudokuData);
-		SudokuStatus status = new SudokuStatus(id, sudokuData.getStatus());
+		SudokuStatus status = new SudokuStatus(id, sudokuData.getStatus(), "0");
 		sudokuEventSrc.fire(status);
 		return id;
 	}

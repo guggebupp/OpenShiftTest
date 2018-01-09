@@ -7,9 +7,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class SudokuStatus {
 	private Long id;
 	private String status;
-	public SudokuStatus(Long id, String status) {
+	private String time;
+	
+	public SudokuStatus(Long id, String status, String time) {
 		this.id = id;
 		this.status = status;
+		this.time = time;
 	}
 	public Long getId() {
 		return id;
@@ -22,6 +25,12 @@ public class SudokuStatus {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 	

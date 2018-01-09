@@ -139,7 +139,7 @@ public class SudokuRepository {
 	public List<SudokuStatus> getAll() {
 		List<SudokuStatus> status = new ArrayList<>();
 		for(Map.Entry<Long, SudokuData> sud : sudokuMap.entrySet()){
-			status.add(new SudokuStatus(sud.getKey(), sud.getValue().getStatus()));
+			status.add(new SudokuStatus(sud.getKey(), sud.getValue().getStatus(), sud.getValue().getTime()));
 			
 		}
 		return status;
@@ -149,7 +149,7 @@ public class SudokuRepository {
 		List<SudokuStatus> status = new ArrayList<>();
 		for(Map.Entry<Long, SudokuData> sud : sudokuMap.entrySet()){
 			if("IDLE".equals(sud.getValue().getStatus())){
-				status.add(new SudokuStatus(sud.getKey(), sud.getValue().getStatus()));
+				status.add(new SudokuStatus(sud.getKey(), sud.getValue().getStatus(), sud.getValue().getTime()));
 			}
 			
 		}

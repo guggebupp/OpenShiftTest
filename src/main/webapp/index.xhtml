@@ -244,12 +244,17 @@
 			<h:column>
 				<f:facet name="header">Status</f:facet>
                 #{_sudokustatus.status}
+            </h:column>
+            <h:column>
+				<f:facet name="header">Time</f:facet>
+                #{_sudokustatus.time}
             </h:column>    
 			<h:column>
 				<f:facet name="header">REST URL</f:facet>
 				<a
 					href="#{request.contextPath}/rest/sudoku/result/#{_sudokustatus.id}">/rest/sudoku/result/#{_sudokustatus.id}</a>
 			</h:column>
+			
 			        <!-- 
 			<h:column>				
 				<h:commandLink id="solveLink" action="#{sudokuController.solveSudoku}">

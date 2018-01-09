@@ -11,6 +11,7 @@ public class SudokuData {
 	
 	private List<Integer> data = new ArrayList<>();	
 	private String status;
+	private String time;
 		
 
 	public List<Integer> getData() {
@@ -18,7 +19,7 @@ public class SudokuData {
 	}
 
 
-	public void setDat(List<Integer> col) {
+	public void setDat(List<Integer> data) {
 		this.data = data;
 	}
 	
@@ -30,6 +31,16 @@ public class SudokuData {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+
+	public String getTime() {
+		return time;
+	}
+
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	
