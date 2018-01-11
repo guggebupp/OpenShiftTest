@@ -17,12 +17,28 @@
 -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
-		<h1>Welcome to Sudoku!</h1>
+		<h1>Welcome to TempOverView!</h1>
+		
+		<h:form id="form">
+        <rich:chart title="Temperature graph" styleClass="graf">         
+        <a4j:repeat value="#{tempController.sensors}" var="sensor">   
+                <rich:chartSeries label="#{sensor.name}" type="line">
+                    <a4j:repeat value="#{sensor.data}" var="record">
+                        <rich:chartPoint x="#{record.year}" y="#{record.tons}" />
+                    </a4j:repeat>
+                </rich:chartSeries>            
+            </a4j:repeat> 
+            <rich:chartXAxis label="time" />
+            <rich:chartYAxis label="Temp" />
+        </rich:chart>
+        </h:form>
 
 
 		<h:form id="reg">
@@ -32,16 +48,16 @@
 
 			<p>
 				<h:panelGrid columns="2">
-					<h:commandButton id="save" action="#{sudokuController.saveSudoku}"
-						value="Save" styleClass="register" />
+					<h:commandButton id="save" action="#{tempController.getSensorData}"
+						value="GetSensorData" styleClass="register" />
 					<h:messages styleClass="messages" errorClass="invalid"
 						infoClass="valid" warnClass="warning" globalOnly="true" />					
 				</h:panelGrid>
 			</p>
 		</h:form>
-		<h2>Sudokus</h2>
+		<h2>Sensors</h2>
 		<h:panelGroup rendered="#{empty sudoks}">
-			<em>No registered sudokus.</em>
+			<em>No registered Sensors.</em>
 		</h:panelGroup>
 		<h:dataTable var="_sensor" value="sensors"
 			rendered="#{not empty sudokus}" styleClass="simpletablestyle">
