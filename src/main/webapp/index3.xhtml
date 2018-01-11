@@ -28,7 +28,7 @@
 		
 		<h:form id="form">
         <rich:chart title="Temperature graph" styleClass="graf">         
-        <a4j:repeat value="#{tempController.sensors}" var="sensor">   
+        <a4j:repeat value="#{temperatureController.sensors}" var="sensor">   
                 <rich:chartSeries label="#{sensor.name}" type="line">
                     <a4j:repeat value="#{sensor.data}" var="record">
                         <rich:chartPoint x="#{record.year}" y="#{record.tons}" />
@@ -48,7 +48,7 @@
 
 			<p>
 				<h:panelGrid columns="2">
-					<h:commandButton id="save" action="#{tempController.getSensorData}"
+					<h:commandButton id="save" action="#{temperatureController.getSensorData}"
 						value="GetSensorData" styleClass="register" />
 					<h:messages styleClass="messages" errorClass="invalid"
 						infoClass="valid" warnClass="warning" globalOnly="true" />					
