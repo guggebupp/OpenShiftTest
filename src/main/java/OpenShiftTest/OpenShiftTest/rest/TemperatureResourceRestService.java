@@ -40,6 +40,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import OpenShiftTest.OpenShiftTest.model.SudokuData;
 import OpenShiftTest.OpenShiftTest.model.TempData;
 import OpenShiftTest.OpenShiftTest.service.TemperatureService;
 
@@ -60,6 +61,7 @@ public class TemperatureResourceRestService {
 
     @Inject
     TemperatureService temperatureService;
+        
 
     @POST
     @Path("/saveTempData/{id:[0-9][0-9]*}")

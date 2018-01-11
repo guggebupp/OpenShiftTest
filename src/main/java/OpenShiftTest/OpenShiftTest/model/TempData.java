@@ -7,12 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TempData {	
 	private Long timeStamp;
 	private float temperature;
-	
-	public TempData(Long timeStamp, float temperature) {
-		super();		
-		this.timeStamp = timeStamp;
-		this.temperature = temperature;
-	}
+		
 
 
 	public Long getTimeStamp() {

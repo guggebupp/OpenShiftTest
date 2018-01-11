@@ -25,7 +25,12 @@ public class TemperatureRepository {
 	public List<TempData> getTempData(long id) {
 		if(temperatureMap.get(id) == null){
 			List<TempData> tempDataList = new ArrayList<>();
-			tempDataList.add(new TempData(System.currentTimeMillis(), new Float(12.5)));
+			TempData d = new TempData();
+			d.setTimeStamp(System.currentTimeMillis());
+			d.setTemperature(new Float(12.5));
+			
+			tempDataList.add(d);
+			
 			temperatureMap.put(id, tempDataList);
 			
 		}
