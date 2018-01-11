@@ -26,7 +26,8 @@
 	<ui:define name="content">
 		<h1>Welcome to TempOverView!</h1>
 		
-		<h:form id="form">
+	<h:form id="reg">
+	<h2>Temp handler</h2>			
         <rich:chart title="Temperature graph" styleClass="graf">         
         <a4j:repeat value="#{tempGraphDatas}" var="tempGraphData">   
                 <rich:chartSeries label="#{tempGraphData.name}" type="line">
@@ -38,13 +39,11 @@
             <rich:chartXAxis label="time" />
             <rich:chartYAxis label="Temp" />
         </rich:chart>
-        </h:form>
+        
 
 
-		<h:form id="reg">
-			<h2>Temp handler</h2>
-			<p>Enforces annotation-based constraints defined on the model
-				class.</p>			
+		
+						
 
 			<p>
 				<h:panelGrid columns="2">
