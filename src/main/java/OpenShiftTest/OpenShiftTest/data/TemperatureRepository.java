@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import OpenShiftTest.OpenShiftTest.model.TempData;
 
+@ApplicationScoped
 public class TemperatureRepository {
 	
 	Map<Long, List<TempData>> temperatureMap = new HashMap<>();
