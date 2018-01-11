@@ -28,10 +28,10 @@
 		
 		<h:form id="form">
         <rich:chart title="Temperature graph" styleClass="graf">         
-        <a4j:repeat value="#{temperatureController.sensors}" var="sensor">   
-                <rich:chartSeries label="#{sensor.name}" type="line">
-                    <a4j:repeat value="#{sensor.data}" var="record">
-                        <rich:chartPoint x="#{record.year}" y="#{record.tons}" />
+        <a4j:repeat value="#{tempGraphDatas}" var="tempGraphData">   
+                <rich:chartSeries label="#{tempGraphData.name}" type="line">
+                    <a4j:repeat value="#{tempGraphData.data}" var="record">
+                        <rich:chartPoint x="#{record.time}" y="#{record.temp}" />
                     </a4j:repeat>
                 </rich:chartSeries>            
             </a4j:repeat> 
@@ -56,11 +56,11 @@
 			</p>
 		</h:form>
 		<h2>Sensors</h2>
-		<h:panelGroup rendered="#{empty sudoks}">
+		<h:panelGroup rendered="#{empty sensors">
 			<em>No registered Sensors.</em>
 		</h:panelGroup>
 		<h:dataTable var="_sensor" value="sensors"
-			rendered="#{not empty sudokus}" styleClass="simpletablestyle">
+			rendered="#{not empty sensors}" styleClass="simpletablestyle">
 			<h:column>
 				<f:facet name="header">Id</f:facet>
                 #{_sensor}

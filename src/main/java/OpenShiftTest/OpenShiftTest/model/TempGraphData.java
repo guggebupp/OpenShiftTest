@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TempGraphData {
 	private String name;
-	private List<Float> data = new ArrayList<>();
+	private List<TempData> data = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -13,10 +13,10 @@ public class TempGraphData {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Float> getData() {
+	public List<TempData> getData() {
 		return data;
 	}
-	public void setData(List<Float> data) {
+	public void setData(List<TempData> data) {
 		this.data = data;
 	}
 

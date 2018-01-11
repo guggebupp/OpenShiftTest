@@ -65,9 +65,8 @@ public class TemperatureController {
     		List<TempData> tempDatas = temperatureService.getTempData(sensor);
     		TempGraphData tempGraphData = new TempGraphData();
     		tempGraphData.setName(Long.toString(sensor));
-    		for(TempData tempData : tempDatas){
-    			tempGraphData.getData().add(tempData.getTemperature());
-    		}
+    		tempGraphData.setData(tempDatas);
+    		
     		
     	}
     	return temperatureService.getTempData(12345);
