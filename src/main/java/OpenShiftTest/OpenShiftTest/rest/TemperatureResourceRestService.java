@@ -66,8 +66,9 @@ public class TemperatureResourceRestService {
     @POST
     @Path("/saveTempData/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public void saveTempData(@PathParam("id") long id, TempData tempData) {
+    public String saveTempData(@PathParam("id") long id, TempData tempData) {
         temperatureService.saveTemp(id, tempData);
+        return "Saved";
     }
     
     

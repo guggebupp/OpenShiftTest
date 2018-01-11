@@ -1,5 +1,9 @@
 package OpenShiftTest.OpenShiftTest.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @SuppressWarnings("serial")
@@ -7,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TempData {	
 	private Long timeStamp;
 	private float temperature;
-		
+	private String 	timeFormatted;
 
 
 	public Long getTimeStamp() {
@@ -16,6 +20,9 @@ public class TempData {
 
 	public void setTimeStamp(Long timeStamp) {
 		this.timeStamp = timeStamp;
+		Date d = new Date(timeStamp);
+        DateFormat f = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.mmm'Z'");        
+		this.timeFormatted = f.format(d);
 	}
 
 	public float getTemperature() {
@@ -23,7 +30,15 @@ public class TempData {
 	}
 
 	public void setTemperature(float temperature) {
-		this.temperature = temperature;
+		this.temperature = temperature;		
+	}
+
+	public String getTimeFormatted() {
+		return timeFormatted;
+	}
+
+	public void setTimeFormatted(String timeFormatted) {
+		this.timeFormatted = timeFormatted;
 	}
 	
 	
