@@ -56,6 +56,22 @@ public class TemperatureController {
     @Named
     private List<TempGraphData> tempGraphDatas;
           
+    @PostConstruct
+    public void init() {
+    	System.out.println("Init controller");
+    	if(tempGraphDatas == null){
+    		tempGraphDatas = new ArrayList<>();
+    	}
+    	for(Long sensor : temperatureService.listSensor()){
+    		System.out.println("Init controller sensor " + sensor);
+    		List<TempData> tempDatas = temperatureService.getTempData(sensor);
+    		TempGraphData tempGraphData = new TempGraphData();
+    		tempGraphData.setName(Long.toString(sensor));
+    		tempGraphData.setData(tempDatas);
+    		
+    		
+    	}
+    }
     
     public List<TempData> getSensorData(){    
     	if(tempGraphDatas == null){
