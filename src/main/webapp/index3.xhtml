@@ -59,7 +59,7 @@
 		<h:panelGroup rendered="#{empty sensors}">
 			<em>No registered Sensors.</em>
 		</h:panelGroup>
-		<h:dataTable var="_sensor" value="sensors"
+		<h:dataTable var="_sensor" value="#{sensors}"		
 			rendered="#{not empty sensors}" styleClass="simpletablestyle">
 			<h:column>
 				<f:facet name="header">Id</f:facet>
