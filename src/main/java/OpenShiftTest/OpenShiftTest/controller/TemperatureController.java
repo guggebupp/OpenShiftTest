@@ -68,20 +68,24 @@ public class TemperatureController {
     		TempGraphData tempGraphData = new TempGraphData();
     		tempGraphData.setName(Long.toString(sensor));
     		tempGraphData.setData(tempDatas);
+    		tempGraphDatas.add(tempGraphData);
     		
     		
     	}
     }
     
-    public List<TempData> getSensorData(){    
+    public List<TempData> getSensorData(){
+    	System.out.println("getSensorData");
     	if(tempGraphDatas == null){
     		tempGraphDatas = new ArrayList<>();
     	}
     	for(Long sensor : temperatureService.listSensor()){
+    		System.out.println("getSensorData sensor " + sensor);
     		List<TempData> tempDatas = temperatureService.getTempData(sensor);
     		TempGraphData tempGraphData = new TempGraphData();
     		tempGraphData.setName(Long.toString(sensor));
     		tempGraphData.setData(tempDatas);
+    		tempGraphDatas.add(tempGraphData);
     		
     		
     	}
