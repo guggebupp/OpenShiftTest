@@ -23,6 +23,8 @@ import javax.enterprise.event.Reception;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import OpenShiftTest.OpenShiftTest.model.SudokuStatus;
@@ -33,7 +35,7 @@ public class TempSensorListProducer {
     @Inject
     private TemperatureRepository temperatureRepository;
 
-    private List<Long> sensors;
+    private List<Long> sensors = new ArrayList<>();
 
     // @Named provides access the return value via the EL variable name "members" in the UI (e.g.
     // Facelets or JSP view)
@@ -50,6 +52,8 @@ public class TempSensorListProducer {
     @SuppressWarnings("unchecked")
 	@PostConstruct
     public void retrieveAllSensors() {
-    	sensors = (List<Long>) temperatureRepository.listSensor();
+    	for(Long id : temperatureRepository.listSensor()){
+    		sensors.add(id);
+    	}    	
     }
 }
