@@ -12,6 +12,8 @@ public class TemperatureService {
 	
 	@Inject
 	TemperatureRepository temperatureRepository;
+	
+	
 
 	public void saveTemp(long id, TempData tempData) {
 		temperatureRepository.saveTemp(id, tempData);

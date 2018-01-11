@@ -37,7 +37,10 @@ public class SudokuService {
 	}
 
 	public Long solveSudoku(long id, SudokuData sudokuData) {
-		return sudokuRepository.solveSudoku(id, sudokuData);
+		sudokuRepository.solveSudoku(id, sudokuData);
+		SudokuStatus status = new SudokuStatus(id, sudokuData.getStatus(), sudokuData.getTime());
+		sudokuEventSrc.fire(status);
+		return id;
 	}
 
 	public List<SudokuStatus> list() {

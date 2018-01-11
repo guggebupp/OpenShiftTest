@@ -28,27 +28,28 @@ import java.util.List;
 import OpenShiftTest.OpenShiftTest.model.SudokuStatus;
 
 @RequestScoped
-public class SudokuListProducer {
+public class TempSensorListProducer {
 
     @Inject
-    private SudokuRepository sudokuRepository;
+    private TemperatureRepository temperatureRepository;
 
-    private List<SudokuStatus> sudokus;
+    private List<Long> sensors;
 
-    // @Named provides access the return value via the EL variable name "sudokus" in the UI (e.g.
+    // @Named provides access the return value via the EL variable name "members" in the UI (e.g.
     // Facelets or JSP view)
     @Produces
     @Named
-    public List<SudokuStatus> getSudokus() {
-        return sudokus;
+    public List<Long> getSensors() {
+        return sensors;
     }
 
-    public void onSukokuListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final SudokuStatus sudokuStatus) {
-        retrieveAllSudkous();
+    public void onSukokuListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final Long sensor) {
+    	retrieveAllSensors();
     }
 
-    @PostConstruct
-    public void retrieveAllSudkous() {
-    	sudokus = sudokuRepository.getAll();
+    @SuppressWarnings("unchecked")
+	@PostConstruct
+    public void retrieveAllSensors() {
+    	sensors = (List<Long>) temperatureRepository.listSensor();
     }
 }
