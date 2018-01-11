@@ -13,11 +13,14 @@ public class TemperatureRepository {
 	Map<Long, List<TempData>> temperatureMap = new HashMap<>();
 
 	public void saveTemp(long id, TempData tempData) {
+		System.out.println("Adding id: " +  id);
 		if(temperatureMap.get(id) == null){
+			System.out.println("Adding new id: " +  id);
 			List<TempData> tempDataList = new ArrayList<>();
 			temperatureMap.put(id, tempDataList);
 			
 		}
+		System.out.println("Adding add id: " +  id);
 		temperatureMap.get(id).add(tempData);
 
 	}
