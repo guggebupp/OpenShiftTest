@@ -20,8 +20,8 @@ public class TempData {
 
 	public void setTimeStamp(Long timeStamp) {
 		this.timeStamp = timeStamp;
-		Date d = new Date(timeStamp);
-        DateFormat f = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.mmm'Z'");        
+		Date d = new Date(timeStamp);		
+        DateFormat f = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");        
 		this.timeFormatted = f.format(d);
 	}
 

@@ -33,6 +33,7 @@ import javax.inject.Named;
 import org.apache.commons.lang3.StringUtils;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
@@ -65,7 +66,7 @@ public class TemperatureController {
 
 			int i = 0;
 			for(TempData td : temperatureService.getTempData(sensor)){
-				s.set(new Date(td.getTimeStamp()), td.getTemperature());
+				s.set(td.getTimeFormatted(), td.getTemperature());
 			}			
 
 			lineModel.addSeries(s);
@@ -75,12 +76,15 @@ public class TemperatureController {
 		y.setMin(-20);
 		y.setMax(40);
 		y.setLabel("Temperature");
+		
+		DateAxis axis = new DateAxis("Dates");
+        axis.setTickAngle(-50);
+        axis.setMax("2019-01-01 00:10:56");
+        axis.setTickFormat("%H:%#M:%S");
 
-		Axis x = lineModel.getAxis(AxisType.X);
-		//x.setMin(0);
-		//x.setMax(7);
-		//x.setTickInterval("1");
-		x.setLabel("Date");
+         
+        lineModel.getAxes().put(AxisType.X, axis);
+		
 
 	}
 
