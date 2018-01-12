@@ -29,7 +29,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 import org.apache.commons.lang3.StringUtils;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
@@ -47,71 +46,67 @@ import OpenShiftTest.OpenShiftTest.service.TemperatureService;
 @ApplicationScoped
 public class TemperatureController {
 
-    @Inject
-    private FacesContext facesContext;
+	@Inject
+	private FacesContext facesContext;
 
-    @Inject
-    private TemperatureService temperatureService;
-    
-    
-    private LineChartModel lineModel;
-          
-    @PostConstruct
-    public void init() {
-    	lineModel = new LineChartModel();
-        LineChartSeries s = new LineChartSeries();
-        s.setLabel("Population");
+	@Inject
+	private TemperatureService temperatureService;
 
-        s.set(1, 5.20);
-        s.set(2, 19.63);
-        s.set(3, 59.01);
-        s.set(4, 139.76);
-        s.set(5, 300.4);
-        s.set(6, 630);
+	private LineChartModel lineModel;
 
-        lineModel.addSeries(s);
-        lineModel.setLegendPosition("e");
-        Axis y = lineModel.getAxis(AxisType.Y);
-        y.setMin(0.5);
-        y.setMax(700);
-        y.setLabel("Millions");
+	@PostConstruct
+	public void init() {
+		lineModel = new LineChartModel();
+		for (Long sensor : temperatureService.listSensor()) {
+			LineChartSeries s = new LineChartSeries();
+			s.setLabel(sensor + "");
 
-        Axis x = lineModel.getAxis(AxisType.X);
-        x.setMin(0);
-        x.setMax(7);
-        x.setTickInterval("1");
-        x.setLabel("Number of Years");
+			int i = 0;
+			for(TempData td : temperatureService.getTempData(sensor)){
+				s.set(i++, td.getTemperature());
+			}			
 
-    }
+			lineModel.addSeries(s);
+		}
+		lineModel.setLegendPosition("e");
+		Axis y = lineModel.getAxis(AxisType.Y);
+		y.setMin(0.5);
+		y.setMax(700);
+		y.setLabel("TEmperature");
 
-    public LineChartModel getLineModel() {
-        return lineModel;
-    }
-    
-    public List<TempData> getSensorData(){    	
-    	return temperatureService.getTempData(12345);
-    }
-        
-                       
+		Axis x = lineModel.getAxis(AxisType.X);
+		x.setMin(0);
+		x.setMax(7);
+		x.setTickInterval("1");
+		x.setLabel("Date");
 
-    private String getRootErrorMessage(Exception e) {
-        // Default to general error message that registration failed.
-        String errorMessage = "Registration failed. See server log for more information";
-        if (e == null) {
-            // This shouldn't happen, but return the default messages
-            return errorMessage;
-        }
+	}
 
-        // Start with the exception and recurse to find the root cause
-        Throwable t = e;
-        while (t != null) {
-            // Get the message from the Throwable class instance
-            errorMessage = t.getLocalizedMessage();
-            t = t.getCause();
-        }
-        // This is the root cause message
-        return errorMessage;
-    }
+	public LineChartModel getLineModel() {
+		return lineModel;
+	}
 
+	public List<TempData> getSensorData() {
+		return temperatureService.getTempData(12345);
+	}
+
+	private String getRootErrorMessage(Exception e) {
+		// Default to general error message that registration failed.
+		String errorMessage = "Registration failed. See server log for more information";
+		if (e == null) {
+			// This shouldn't happen, but return the default messages
+			return errorMessage;
+		}
+
+		// Start with the exception and recurse to find the root cause
+		Throwable t = e;
+		while (t != null) {
+			// Get the message from the Throwable class instance
+			errorMessage = t.getLocalizedMessage();
+			t = t.getCause();
+		}
+		// This is the root cause message
+		return errorMessage;
+	}
 
 }
