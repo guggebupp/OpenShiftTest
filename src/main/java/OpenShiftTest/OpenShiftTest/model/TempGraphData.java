@@ -1,11 +1,12 @@
 package OpenShiftTest.OpenShiftTest.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TempGraphData {
 	private String name;
-	private List<TempData> data = new ArrayList<>();
+	private List<TempData> data = new LinkedList<>();
 	
 	public String getName() {
 		return name;
