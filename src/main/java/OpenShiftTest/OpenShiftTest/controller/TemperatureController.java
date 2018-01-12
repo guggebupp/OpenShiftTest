@@ -66,7 +66,7 @@ public class TemperatureController {
     		System.out.println("Init controller sensor " + sensor + ", no of readings: " + tempDatas.size());
     		TempGraphData tempGraphData = new TempGraphData();
     		tempGraphData.setName(Long.toString(sensor));
-    		tempGraphData.setData(tempDatas);
+    		tempGraphData.getData().addAll(tempDatas);
     		tempGraphDatas.add(tempGraphData);
     		
     		
@@ -83,7 +83,7 @@ public class TemperatureController {
     		System.out.println("Init controller sensor " + sensor + ", no of readings: " + tempDatas.size());
     		TempGraphData tempGraphData = new TempGraphData();
     		tempGraphData.setName(Long.toString(sensor));
-    		tempGraphData.setData(tempDatas);
+    		tempGraphData.getData().addAll(tempDatas);
     		tempGraphDatas.add(tempGraphData);
     		
     		
