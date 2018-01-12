@@ -52,9 +52,8 @@ public class TemperatureController {
     @Inject
     private TemperatureService temperatureService;
     
-    @Produces
-    @Named
-    private List<TempGraphData> tempGraphDatas;
+    
+     List<TempGraphData> tempGraphDatas;
           
     @PostConstruct
     public void init() {
@@ -62,9 +61,9 @@ public class TemperatureController {
     	if(tempGraphDatas == null){
     		tempGraphDatas = new ArrayList<>();
     	}
-    	for(Long sensor : temperatureService.listSensor()){
-    		System.out.println("Init controller sensor " + sensor);
+    	for(Long sensor : temperatureService.listSensor()){    		
     		List<TempData> tempDatas = temperatureService.getTempData(sensor);
+    		System.out.println("Init controller sensor " + sensor + ", no of readings: " + tempDatas.size());
     		TempGraphData tempGraphData = new TempGraphData();
     		tempGraphData.setName(Long.toString(sensor));
     		tempGraphData.setData(tempDatas);
@@ -79,9 +78,9 @@ public class TemperatureController {
     	if(tempGraphDatas == null){
     		tempGraphDatas = new ArrayList<>();
     	}
-    	for(Long sensor : temperatureService.listSensor()){
-    		System.out.println("getSensorData sensor " + sensor);
+    	for(Long sensor : temperatureService.listSensor()){    		
     		List<TempData> tempDatas = temperatureService.getTempData(sensor);
+    		System.out.println("Init controller sensor " + sensor + ", no of readings: " + tempDatas.size());
     		TempGraphData tempGraphData = new TempGraphData();
     		tempGraphData.setName(Long.toString(sensor));
     		tempGraphData.setData(tempDatas);
@@ -112,5 +111,9 @@ public class TemperatureController {
         // This is the root cause message
         return errorMessage;
     }
+
+	public List<TempGraphData> getTempGraphDatas() {
+		return tempGraphDatas;
+	}
 
 }
