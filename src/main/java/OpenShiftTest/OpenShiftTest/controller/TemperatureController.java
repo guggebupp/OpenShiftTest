@@ -79,8 +79,8 @@ public class TemperatureController {
 		
 		DateAxis axis = new DateAxis("Dates");
         axis.setTickAngle(-50);
-        axis.setMax("2019-01-01 00:10:56");
-        axis.setTickFormat("%H:%#M:%S");
+        axis.setMax("2018-05-01 00:10:56");
+        axis.setTickFormat("%b %#d, %y %H:%#M:%S");
 
          
         lineModel.getAxes().put(AxisType.X, axis);
