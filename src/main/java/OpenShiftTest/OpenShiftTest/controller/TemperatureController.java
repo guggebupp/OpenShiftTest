@@ -64,16 +64,16 @@ public class TemperatureController {
 
 			int i = 0;
 			for(TempData td : temperatureService.getTempData(sensor)){
-				s.set(i++, td.getTemperature());
+				s.set(td.getTimeFormatted(), td.getTemperature());
 			}			
 
 			lineModel.addSeries(s);
 		}
 		lineModel.setLegendPosition("e");
 		Axis y = lineModel.getAxis(AxisType.Y);
-		y.setMin(0.5);
-		y.setMax(700);
-		y.setLabel("TEmperature");
+		y.setMin(-20);
+		y.setMax(40);
+		y.setLabel("Temperature");
 
 		Axis x = lineModel.getAxis(AxisType.X);
 		x.setMin(0);
