@@ -17,6 +17,7 @@
 package OpenShiftTest.OpenShiftTest.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -64,7 +65,7 @@ public class TemperatureController {
 
 			int i = 0;
 			for(TempData td : temperatureService.getTempData(sensor)){
-				s.set(td.getTimeFormatted(), td.getTemperature());
+				s.set(new Date(td.getTimeStamp()), td.getTemperature());
 			}			
 
 			lineModel.addSeries(s);
