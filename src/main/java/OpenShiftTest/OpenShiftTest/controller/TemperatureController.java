@@ -76,9 +76,9 @@ public class TemperatureController {
 		y.setLabel("Temperature");
 
 		Axis x = lineModel.getAxis(AxisType.X);
-		x.setMin(0);
-		x.setMax(7);
-		x.setTickInterval("1");
+		//x.setMin(0);
+		//x.setMax(7);
+		//x.setTickInterval("1");
 		x.setLabel("Date");
 
 	}
