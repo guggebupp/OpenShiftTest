@@ -31,11 +31,12 @@ import javax.inject.Named;
 
 
 import org.apache.commons.lang3.StringUtils;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.LineChartModel;
+import org.primefaces.model.chart.LineChartSeries;
 
-import OpenShiftTest.OpenShiftTest.model.SudokuData;
 import OpenShiftTest.OpenShiftTest.model.TempData;
-import OpenShiftTest.OpenShiftTest.model.TempGraphData;
-import OpenShiftTest.OpenShiftTest.service.SudokuService;
 import OpenShiftTest.OpenShiftTest.service.TemperatureService;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
@@ -53,41 +54,41 @@ public class TemperatureController {
     private TemperatureService temperatureService;
     
     
-     List<TempGraphData> tempGraphDatas;
+    private LineChartModel lineModel;
           
     @PostConstruct
     public void init() {
-    	System.out.println("Init controller");
-    	if(tempGraphDatas == null){
-    		tempGraphDatas = new ArrayList<>();
-    	}
-    	for(Long sensor : temperatureService.listSensor()){    		
-    		List<TempData> tempDatas = temperatureService.getTempData(sensor);
-    		System.out.println("Init controller sensor " + sensor + ", no of readings: " + tempDatas.size());
-    		TempGraphData tempGraphData = new TempGraphData();
-    		tempGraphData.setName(Long.toString(sensor));
-    		tempGraphData.getData().addAll(tempDatas);
-    		tempGraphDatas.add(tempGraphData);
-    		
-    		
-    	}
+    	lineModel = new LineChartModel();
+        LineChartSeries s = new LineChartSeries();
+        s.setLabel("Population");
+
+        s.set(1, 5.20);
+        s.set(2, 19.63);
+        s.set(3, 59.01);
+        s.set(4, 139.76);
+        s.set(5, 300.4);
+        s.set(6, 630);
+
+        lineModel.addSeries(s);
+        lineModel.setLegendPosition("e");
+        Axis y = lineModel.getAxis(AxisType.Y);
+        y.setMin(0.5);
+        y.setMax(700);
+        y.setLabel("Millions");
+
+        Axis x = lineModel.getAxis(AxisType.X);
+        x.setMin(0);
+        x.setMax(7);
+        x.setTickInterval("1");
+        x.setLabel("Number of Years");
+
+    }
+
+    public LineChartModel getLineModel() {
+        return lineModel;
     }
     
-    public List<TempData> getSensorData(){
-    	System.out.println("getSensorData");
-    	if(tempGraphDatas == null){
-    		tempGraphDatas = new ArrayList<>();
-    	}
-    	for(Long sensor : temperatureService.listSensor()){    		
-    		List<TempData> tempDatas = temperatureService.getTempData(sensor);
-    		System.out.println("Init controller sensor " + sensor + ", no of readings: " + tempDatas.size());
-    		TempGraphData tempGraphData = new TempGraphData();
-    		tempGraphData.setName(Long.toString(sensor));
-    		tempGraphData.getData().addAll(tempDatas);
-    		tempGraphDatas.add(tempGraphData);
-    		
-    		
-    	}
+    public List<TempData> getSensorData(){    	
     	return temperatureService.getTempData(12345);
     }
         
@@ -112,8 +113,5 @@ public class TemperatureController {
         return errorMessage;
     }
 
-	public List<TempGraphData> getTempGraphDatas() {
-		return tempGraphDatas;
-	}
 
 }

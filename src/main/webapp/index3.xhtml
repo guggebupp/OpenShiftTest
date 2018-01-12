@@ -17,6 +17,7 @@
 -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -26,11 +27,16 @@
 	<ui:define name="content">
 		<h1>Welcome to TempOverView!</h1>
 		
+		<h:body style="margin-left:50px">
+    <h2>PrimeFaces Linear Chart Example</h2>
+    <p:chart type="line" model="#{lineChartBean.lineModel}" style="height:4L00px;width:600px"/>
+</h:body>
+		
 	<h:form id="reg">
 	<h2>Temp handler</h2>	
 	<p>Enforces annotation-based constraints defined on the model
 				class.</p>		
-        <rich:chart title="Temperature graph" styleClass="graf">         
+        <!-- <rich:chart title="Temperature graph" styleClass="graf">         
         <a4j:repeat value="#{temperatureController.tempGraphDatas}" var="tempGraphData">   
                 <rich:chartSeries label="#{tempGraphData.name}" type="line">
                     <a4j:repeat value="#{tempGraphData.data}" var="record">
@@ -41,7 +47,7 @@
             <rich:chartXAxis label="time" />
             <rich:chartYAxis label="Temp" />
         </rich:chart>
-        							
+        	 -->						
 			<p>
 				<h:panelGrid columns="2">
 					<h:commandButton id="save" action="#{temperatureController.getSensorData}"
