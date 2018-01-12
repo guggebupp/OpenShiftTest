@@ -56,6 +56,7 @@ public class TemperatureController {
 
 	@PostConstruct
 	public void init() {
+		System.out.println("init");
 		lineModel = new LineChartModel();
 		for (Long sensor : temperatureService.listSensor()) {
 			LineChartSeries s = new LineChartSeries();
@@ -87,6 +88,7 @@ public class TemperatureController {
 	}
 
 	public List<TempData> getSensorData() {
+		init();
 		return temperatureService.getTempData(12345);
 	}
 
